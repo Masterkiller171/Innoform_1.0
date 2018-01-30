@@ -1,0 +1,178 @@
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad{
+    margin-top:20px;
+}
+
+.box h3{
+        text-align:center;
+	position:relative;
+	top:80px;
+}
+.boxp {
+        direction:rtl;
+	width:90%;
+	height:60%;
+	background:#FFF;
+        border-radius: 2px; 
+        overflow-y: scroll;
+        opacity: 0.8;
+        border-radius: 10px;
+}
+.shadow{
+    box-shadow: 0 10px 6px -6px #777;
+}
+.box2 {
+    width:80%;
+    height:150px;
+    background:grey;
+    margin:40px auto;
+    border-radius: 2px;   
+    border: 1px solid #000;
+    overflow: hidden;
+    padding: 10px;
+}
+.btn a{
+  color: #fff;
+  text-decoration: none;
+}
+.cover .btn{
+  padding: 0.1em 1em;
+  margin: 0.5em;
+  float: right;
+  border-radius: 0.25em;
+}
+.cover .date{
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  font-size: 10pt;
+}
+.boxw{
+    width: 20%;
+    height: 80%;
+    background: white;
+}
+
+img{
+    width: 100px;
+    height: 100px; 
+    border: 1px solid;
+    border-radius: 100%;
+}
+
+.shad{
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}
+
+tabb{
+    padding: 20px;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 10px;
+}
+tabc{
+    padding: 40px;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.fllwbox{
+    direction:rtl;
+    width:10%;
+    height: 70%;
+    opacity: 0.8;
+    background-color: white;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: left;
+}
+.fllwinbox{
+    width: 90%;
+    height: 15%;
+    background-color: #d6ebf2;
+    border-radius: 10px;
+    padding: 5px;
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.fllwinbox:hover  .hidden{   
+    height: 30%;
+    opacity: 0.8;
+    visibility: visible;
+    
+}
+.fllwinbox:hover{
+  transition: height 0.3s;
+  height: 30%;
+}
+
+.fllwtxt{
+    color: black;
+    font-size: 120%;
+    text-align: center;
+}
+.fllw{
+    padding: 10px;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+.fllw:hover{
+    color: red;
+    background-color: lightblue;
+    opacity: 1.0;
+}
+
+timer{
+    padding: 10px;
+    background-color: white;
+    opacity: 0.8;
+}
+aligner{     
+    text-align: center;
+}
+.padders{
+    padding: 0 20px 0 0;
+}
+.dropdown {
+display: inline-block;
+}
+
+.dropdown-content {
+    visibility: hidden;
+}
+
+.dropdown:hover .dropdown-content {
+    visibility: visible;
+}

@@ -1,0 +1,70 @@
+.u-form input[type="title"]
+{
+    width: calc(50% - 22px);
+    height: 45px;
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    border-radius: 2px;
+    color: #333;
+    font-size: 0.8rem;
+    transition: all 0.1s linear;
+}
+
+.button {
+    background-color: blue;
+    border: none;
+    color: lightblue;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.buttonc {
+    background-color: aqua;
+    border: 2px solid aqua;
+    border-radius: 2px;
+    padding: 8px 16px;
+}
+
+.button:hover {
+    background: Blue;
+    color: lightblue;
+}
+
+body {
+    background-color: lightblue;
+}
+
+.post-box {
+    margin: 10px auto;
+    width: 90%;
+    height: 650px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.u-form {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.u-form input[type="textarea"] {
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    border-radius: 2px;
+    color: #333;
+    font-size: 0.8rem;
+    transition: all 0.1s linear;
+}
+
+text-align-cent {
+    text-align: center;
+}

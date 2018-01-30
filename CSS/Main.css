@@ -1,0 +1,160 @@
+body{
+    margin:0;
+    padding:0;
+    height:100%;
+    background-image: url(../Images/Working.jpg);
+    background-size:cover;
+}
+
+#wrapper {
+padding: 20px 0 20px 90px;
+margin: auto;
+}
+.sub-menu-parent { 
+    position: relative;
+}
+
+.sub-menu { 
+  visibility: hidden;
+  position: absolute;
+  width: 130%;
+  transform: translateY(-2em);
+  z-index: -1;
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+
+.sub-menu-parent:hover .sub-menu {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.5s;
+}
+
+nav a { 
+    color: #7f7fbf; 
+    display: inline-block; 
+    padding: 12px 20px; 
+    text-decoration: none;
+}
+nav a:hover { 
+    color: #F55; 
+}
+nav ul, nav ul li { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+}
+nav > ul { 
+    background: #B0E0E6;
+    opacity: 0.8;
+}
+nav > ul > li { 
+    display: inline-block;
+}
+
+.sub-menu {
+  background: #B0E0E6;
+}
+.sub-menu a {
+    white-space: nowrap;
+}
+.filler {
+    width: 1px;
+    height: 10%;
+}
+.filler-small{
+    height: 5%;
+    width: 1px;
+}
+.filler1{
+    width: 1px;
+    height: 3%;
+}
+.left-filler {
+    float: left;
+    width: 3%;
+    height: 1px;
+}
+.right-filler {
+    float: right;
+    width: 3%;
+    height: 1px;
+}
+.two {
+    height: 10%;
+}
+
+.three {
+    height: 60%;
+}
+
+.right_box {
+    display: block;
+    width: 15%;
+    height: auto;
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    border-radius: 4px;
+    color: #333;
+    font-size: 01.1rem;
+    transition: all 0.1s linear;
+    background-color: aliceblue;
+    float: right;
+    text-align: left;
+    opacity: 0.8;
+}
+
+.right_floater {
+    float: right;
+}
+
+.left_floater {
+    float: left;
+}
+
+.body {
+    display: block;
+    width: 70%;
+    text-align: center;
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 01.1rem;
+    transition: all 0.1s linear;
+    background-color: aliceblue;
+    opacity: 0.8;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    color: #333;
+    font-size: 0.6rem;
+    transition: all 0.1s linear;
+    background-color: aliceblue;
+    opacity: 0.9;
+}
+
+text-align-cent {
+    text-align: center;
+}
+.bruv{
+    text-decoration: none;
+}
+.padder{
+    padding: 30px 0 0 0;
+}
+.userbtn{
+    width: 90%;
+    height: 40px;
+}

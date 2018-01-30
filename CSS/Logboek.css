@@ -1,0 +1,11 @@
+table, th, td {
+    border: 1px solid black;
+}
+th, td{
+    text-align: center;
+    width: 10%;
+}
+
+#wrapperr{
+    padding: 0 0 0 20%;
+}
