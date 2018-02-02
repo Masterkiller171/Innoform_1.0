@@ -50,24 +50,6 @@ if(!empty($sql)){
 }
 }
 
-$curtim = date($str);
-
-//Checking if function already exists
-if (!function_exists('create_post')) {
-//Creating function for creating a post if you're logged in
-function create_post(){
-  global $Login; //Login text and make-up
-  global $Create; //Create post text and make-up
-
-//Checking whether $active is one or two (logged-in and logged-out)
- if($_SESSION['active'] == 1){
-  echo $Create;
-   }else{
-     echo $Login;
-  }
- }
-}
-
 //Checking if user has admin permissions or not
 if (!function_exists('navbar')) {
 function navbar(){
@@ -116,13 +98,13 @@ if (!function_exists('days_loop')) {
  }
 }
 //function for myposts on profile page --only usefull when posts are finished
-//function my_posts(){
-//    foreach($posts as $p){
-//        echo '<div class="filler1"></div>
-//              <div class="box2 shadow">'. $post .'</div>';
-//     $p++;
-//    }
-//}
+function my_posts(){
+    foreach($posts as $post){
+        echo '<div class="filler1"></div>
+              <div class="box2 shadow">'. $post .'</div>';
+     $p++;
+    }
+}
 
 //Function loop for testing posts on profile page
 if (!function_exists('my_loop')) {

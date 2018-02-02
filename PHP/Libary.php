@@ -24,10 +24,10 @@ $myloop='<div class="filler1"></div>
          <a href="Post.php">Read more...</a></div></div></div>';
 
 //Link to login page
-$Login ='<a href ="Reg.php"> Please Login</a>';
+$Login ='<a href ="../PHP/Reg.php"> Please Login</a>';
 
 //Link to Create Post page
-$Create ='<a href="Post-input.php">Create post</a>';
+$Create ='<a href="../PHP/Post-input.php">Create post</a>';
 
 //The navbar for (almost) every page
 $navbar =' 
@@ -39,11 +39,11 @@ $navbar ='
      <li class="sub-menu-parent">
        <a '. $dec .'> Posts</a>
        <ul class="sub-menu">
-         <li><a href="PHP/Post-page.php" '. $dec .'>New Posts</a></li>
-         <li><a href="PHP/Post-page.php" '. $dec .'>Hot Posts</a></li>
+         <li><a href="../PHP/Post-page.php" '. $dec .'>New Posts</a></li>
+         <li><a href="../PHP/Post-page.php" '. $dec .'>Hot Posts</a></li>
        </ul>
      </li>
-     <a href="Post-input.php" class="sub-menu-parent" >Create post</a>
+     <a href="../PHP/Post-input.php" class="sub-menu-parent" >Create post</a>
      <li class="sub-menu-parent"><a '. $dec .'>Projects</a>
        <ul class="sub-menu">
          <li><a href="PHP/Projects.php" '. $dec .'>New Projects</a></li>
@@ -77,11 +77,11 @@ $navbaradmin =' <nav style="font-size: 120%; background-color: white; font-famil
      <li class="sub-menu-parent">
        <a '. $dec .'> Posts</a>
        <ul class="sub-menu">
-         <li><a href="PHP/Post-page.php" '. $dec .'>New Posts</a></li>
-         <li><a href="PHP/Post-page.php" '. $dec .'>Hot Posts</a></li>
+         <li><a href="../PHP/Post-page.php" '. $dec .'>New Posts</a></li>
+         <li><a href="../PHP/Post-page.php" '. $dec .'>Hot Posts</a></li>
        </ul>
      </li>
-     <a href="Post-input.php" class="sub-menu-parent" '. $dec .'>Create post</a>
+     <a href="../PHP/Post-input.php" class="sub-menu-parent" '. $dec .'>Create post</a>
      <li class="sub-menu-parent"><a '. $dec .'>Projects</a>
        <ul class="sub-menu">
          <li><a href="PHP/Projects.php" '. $dec .'>New Projects</a></li>
