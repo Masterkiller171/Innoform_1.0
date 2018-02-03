@@ -41,7 +41,7 @@ h1{
   position: relative;
   padding: 1em;
   color: #fff;
-  overflow: hidden;
+  overflow: scroll;
   text-shadow: 1px 1px 0px #000;
 }
 .cover .title{

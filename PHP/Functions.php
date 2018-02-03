@@ -99,24 +99,53 @@ if (!function_exists('days_loop')) {
 }
 //function for myposts on profile page --only usefull when posts are finished
 function my_posts(){
-    foreach($posts as $post){
-        echo '<div class="filler1"></div>
-              <div class="box2 shadow">'. $post .'</div>';
-     $p++;
-    }
-}
-
-//Function loop for testing posts on profile page
-if (!function_exists('my_loop')) {
-function my_loop(){
-    global $myloop;
-    for($l ="";$l <= 100; $l++){
-        echo $myloop ;
+    global $conn;
+    $id = $_SESSION['id'];
+    $mas = $conn -> query("SELECT My_posts FROM `topic_data` WHERE author='$id'");
+    $mass = $mas -> fetch_assoc();
+    $max = $mass['post_topic'];
+    $count = 1;
+    while($count <= $max){
+    $data = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE author='$id' AND post_id='$count'");
+    $sql = $data -> fetch_assoc();
+    $count++;
+        echo
+         '
+         <div class="box2 shadow" style="background-color: #d6ebf2;"> 
+         <div class="left-filler"></div><h2 style="float: left;">'.$sql["post_topic"].'</h2> <br> <p>'.$sql["post_detail"].'</p> 
+         <br> <h6>'.$sql["post_date"].' </h6></div>';
+        
   }
- }
+    
+    
 }
 
-
+function all_post(){
+    global $conn;
+    $mas = $conn -> query("SELECT MAX(post_id) AS post_id FROM `topic_data`");
+    $mass = $mas -> fetch_assoc();
+    $max = $mass['post_id'];
+    $count = 1;
+       while($count <= $max){
+    $posttop = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE post_id='$count'");
+          $sql = $posttop -> fetch_assoc();
+           
+           
+        echo
+    '<ol>   
+        <div class="box"  style="width:1000px;">
+                    <div class="cover left">
+                        <h2 class="title">'.$sql["post_topic"].'</h2>
+                        <p class="intro">'.$sql["post_detail"].'</p>
+                        <p class="date">'.$sql["post_date"].'</p>
+                    </div>
+                </div> 
+            </ol>
+            <br>';
+           
+           $count++;
+       }
+}
 //function indexpost(){ 
   //  $count = "";
   //  $bool = "";

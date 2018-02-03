@@ -8,12 +8,13 @@
      $post_detail = $_POST['post_detail'];      
           
      $datetime = date("d/m/y h:i:s");
-
-     $post_id=rand(0, 1000);     
+     
      if(isset($post_detail) && isset($post_topic) && isset($author) && isset($author_name)){
     //Insert variables into table
-     $sqls ="INSERT INTO topic_data (post_topic, post_detail, post_date, author, author_name, post_id) VALUES ('$post_topic', '$post_detail','$datetime', '$author', '$author_name', '$post_id')";
+     $sqls ="INSERT INTO topic_data (post_topic, post_detail, post_date, author, author_name) VALUES ('$post_topic', '$post_detail','$datetime', '$author', '$author_name')";
      $result = $conn -> query($sqls);
+         
+      $conn -> query("UPDATE userinfo SET My_posts = My_posts + 1 WHERE id = $author");
       header("Location: ../index.php");
      }else{
          $_SESSION['message'] = 'Please fill in the required fields';

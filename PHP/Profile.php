@@ -203,7 +203,7 @@ if(isset($fllwrs)){
                <div class="cover left">
                <p style="text-align: center;">My posts</p>
               <hr>
-           <?php echo my_loop() ?>
+           <?php echo my_posts() ?>
            </div>
            </div>
       </div>

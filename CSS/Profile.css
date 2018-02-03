@@ -57,7 +57,7 @@
     margin:40px auto;
     border-radius: 2px;   
     border: 1px solid #000;
-    overflow: hidden;
+    overflow-y: scroll;
     padding: 10px;
 }
 .btn a{
