@@ -34,7 +34,15 @@ $conn -> query('CREATE TABLE IF NOT EXISTS `userinfo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1280324588 ;');
 
-
+$conn -> query("CREATE TABLE IF NOT EXISTS `topic_data` (
+  `post_id` int(4) NOT NULL AUTO_INCREMENT,
+  `post_topic` varchar(255) DEFAULT NULL,
+  `post_detail` varchar(255) DEFAULT NULL,
+  `post_date` varchar(255) DEFAULT NULL,
+  `author` int(255) DEFAULT NULL,
+  `author_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;");
 
 $conn -> query("INSERT INTO `userinfo` (`Username`, `Name`, `Surname`, `Email`, 
 `Password`, `Comment`, `Gender`, `Specialty`, `id`, `days`, `month`, `year`, `time`, `Website`, `Perm`) VALUES

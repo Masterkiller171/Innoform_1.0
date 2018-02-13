@@ -1,6 +1,10 @@
 <?php include 'Functions.php';
+if($_SERVER["REQUEST_METHOD"] == 'POST'){
+    $id = $_POST['id'];
+    header("Location: Post.php?id=$id");
+}
            ?>
-  <html lang =en>
+  <html lang = en>
    <head>
        
     <title>Post-Page</title>
@@ -12,7 +16,7 @@
 <body>
 
     <div class="right_floater">
-        <?php button($conn, $id) ?></div>
+        <?php button() ?></div>
     
     <div class="filler"></div>
 

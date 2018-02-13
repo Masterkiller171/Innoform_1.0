@@ -9,3 +9,22 @@ th, td{
 #wrapperr{
     padding: 0 0 0 20%;
 }
+
+input{
+    height: 10%; 
+    width: 25%; 
+    display: inline-block; 
+    float: right; 
+    font-size: 140%; 
+    font-family: Gill Sans, sans-serif;
+    background-color: transparent; 
+    border: blue solid 1px; 
+    border-radius: 10px;
+}
+
+textarea{
+    width: 70%; 
+    height: 10%; 
+    border-radius: 10px; 
+    display: inline-block;
+}

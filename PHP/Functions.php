@@ -138,7 +138,10 @@ function all_post(){
                         <h2 class="title">'.$sql["post_topic"].'</h2>
                         <p class="intro">'.$sql["post_detail"].'</p>
                         <p class="date">'.$sql["post_date"].'</p>
-                        <a href="Post.php">Comment</a>
+                        <form method="post">
+                        <input type="hidden" value="'.$count.'" name="id"> 
+                        <input type="submit" name="cmmnt" class="button" value="Comment"> 
+                        </form>
                     </div>
                 </div> 
             </ol>
