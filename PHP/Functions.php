@@ -106,9 +106,9 @@ function my_posts(){
     $max = $mass['post_topic'];
     $count = 1;
     while($count <= $max){
-    $data = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE author='$id' AND post_id='$count'");
-    $sql = $data -> fetch_assoc();
-    $count++;
+      $data = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE author='$id' AND post_id='$count'");
+      $sql = $data -> fetch_assoc();
+      $count++;
         echo
          '
          <div class="box2 shadow" style="background-color: #d6ebf2;"> 
@@ -138,10 +138,12 @@ function all_post(){
                         <h2 class="title">'.$sql["post_topic"].'</h2>
                         <p class="intro">'.$sql["post_detail"].'</p>
                         <p class="date">'.$sql["post_date"].'</p>
+                        <a href="Post.php">Comment</a>
                     </div>
                 </div> 
             </ol>
             <br>';
+           
            
            $count++;
        }

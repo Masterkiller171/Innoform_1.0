@@ -75,7 +75,33 @@ if(isset($quarei)){
 }
 if($_SERVER['REQUEST_METHOD']== 'POST'){
 if(isset($_POST['fllwrs'])){
- if(isset($following)){
+ if(isset($followings)){
+$quary = $conn -> query("SELECT * FROM userinfo WHERE Username='$followings'");
+if(isset($quary) AND !empty($quary)){
+$sqlll = mysqli_fetch_array($quary, MYSQLI_ASSOC); //Splicing all data from from
+$_SESSION['userUsername'] = $sqlll['Username'];
+$_SESSION['userName'] = $sqlll['Name'];
+$_SESSION['userSurname'] = $sqlll['Surname'];
+$_SESSION['userEmail'] = $sqlll['Email'];
+$_SESSION['userSpecialty'] = $sqlll['Specialty'];
+$_SESSION['userDays'] = $sqlll['days'];
+$_SESSION['userMonth'] = $sqlll['month'];
+$_SESSION['userYear'] = $sqlll['year'];
+$_SESSION['userGender'] = $sqlll['Gender'];
+$_SESSION['userTime'] = $sqlll['time'];
+$_SESSION['userComment'] = $sqlll['Comment'];
+if(isset($sqlll['Website'])){
+$_SESSION['userWebsite'] = $sqlll['Website'];
+$_SESSION['userFollowing'] = $sqlll['Following'];
+}
+if(isset($_SESSION['userUsername'])){
+    header("Location: ../Userprofile/customuser.php");
+}
+} 
+}
+}
+    if(isset($_POST['fllws'])){
+         if(isset($following)){
 $quary = $conn -> query("SELECT * FROM userinfo WHERE Username='$following'");
 if(isset($quary) AND !empty($quary)){
 $sqlll = mysqli_fetch_array($quary, MYSQLI_ASSOC); //Splicing all data from from
@@ -99,29 +125,12 @@ if(isset($_SESSION['userUsername'])){
 }
 } 
 }
- }else{
+    }
+    if(isset($_POST['fllw'])){
    if($_SESSION['active'] > 0){   
     //$addtabl = "ALTER TABLE `following` ADD '$follow' VARCHAR( 255 ) NOT NULL";
     $addfllwr = "UPDATE userinfo SET Following = '$follow' WHERE id='$id'";
     $conn -> query($addfllwr);
-      //$conn -> query("UPDATE following SET Following1='$follow' WHERE Following1 IS NULL AND id='$id'");
-      //$fllw1 = $conn -> query("SELECT * FROM following WHERE Following1 IS NULL AND id='$id'");
-      //$fllw2 = $conn -> query("SELECT * FROM following WHERE Following2 IS NULL AND id='$id'");
-      //$fllw3 = $conn -> query("SELECT * FROM following WHERE Following3 IS NULL AND id='$id'");
-      //$fllw4 = $conn -> query("SELECT * FROM following WHERE Following4 IS NULL AND id='$id'");
-      //$fllw5 = $conn -> query("SELECT * FROM following WHERE Following5 IS NULL AND id='$id'");
-      //if($fllw1){
-       //   $conn -> query("UPDATE following SET Following1='$follow' WHERE Following1 IS NULL AND id='$id'");
-      //}elseif($fllw2){
-      //    $conn -> query("UPDATE following SET Following2='$follow' WHERE Following2 IS NULL AND id='$id'");
-      //}elseif($fllw3){
-      //    $conn -> query("UPDATE following SET Following3='$follow' WHERE Following3 IS NULL AND id='$id'");
-      //}elseif($fllw4){
-      //    $conn -> query("UPDATE following SET Following4='$follow' WHERE Following4 IS NULL AND id='$id'");
-      //}elseif($fllw5){
-       //   $conn -> query("UPDATE following SET Following5='$follow' WHERE Following5 IS NULL AND id='$id'");
-      //}
-   
    }else{
         $_SESSION['message'] = "To perform that action you must be signed in";
        header("Location: ../PHP/Login.php");
@@ -138,8 +147,11 @@ if(isset($_SESSION['userUsername'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     
-    <body>      
+    <body>     
+       <strong><?php button()?> </strong>
+       <div class="filler"></div>
         <?php navbar()?>  
+        
              <div class="fllwbox" style="width: 10%;"> 
     <strong> 
     <p style="   
@@ -187,12 +199,14 @@ if(isset($fllwrs)){
           <strong><h4 class="shad">Member Since:</h4></strong>         
           <br>
           <strong><h5 class="shad"><?php echo $_SESSION['userTime'] ?></h5></strong>
-           <a href="Editprof.php" >Edit Profile</a>
            <div class="boxp" style="height: 70%;">
+                        <form method="post">
+              <button type="submit" name="fllw"><strong>Follow <?php echo $_SESSION['userUsername']?></strong></button>
+          </form>
                <div class="cover left">
                <p style="text-align: center;">My posts</p>
               <hr>
-           <?php my_loop() ?>
+           <?php echo /*my_loop()*/ 'Not avaible'; ?>
            </div>
            </div>
       </div><div class="left-filler"></div>

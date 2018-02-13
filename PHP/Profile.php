@@ -73,6 +73,7 @@ if(isset($quarei)){
                        </div>';        
 }
 }
+
 if($_SERVER['REQUEST_METHOD']== 'POST'){
     if(isset($_POST['fllws'])){    
 $_SESSION['userUsername'] = $sqlll['Username'];
@@ -184,7 +185,11 @@ if(isset($_SESSION['userUsername'])){
 if(isset($fllwrs)){
     echo $fllwrs;
 }else{
-    echo "No followers";
+    echo '<div class="fllwinbox" style="background-color:#ff7f7f"><div class="fllwtxt">           
+                        <input type="submit" value="No followers"  name="fllwrs" style="background: transparent; border: none;"/></div> <p style="float: right;">Offline</p>
+                        <p>No followers</p>
+                       <div class="hidden">No followers</div><br>
+                       </div>'; 
 }
 ?>
  </form>
@@ -203,7 +208,6 @@ if(isset($fllwrs)){
                <div class="cover left">
                <p style="text-align: center;">My posts</p>
               <hr>
-           <?php echo my_posts() ?>
            </div>
            </div>
       </div>
@@ -220,8 +224,7 @@ if(isset($fllwrs)){
                   <table class="table table-user-information">
                     <tbody>
 <div class="panel-title" style="background-color: white; opacity: 0.8; border-radius: 10px; white-space: nowrap;"><h3><?php echo $_SESSION['Name'].', '.$_SESSION['Surname'] ?></h3>
-</div>
-                    <hr><div class="filler"></div>
+</div><hr>
                         <tr> 
                         <td>Username</td>
                         <td><?php echo $_SESSION['Username'];?></td>
@@ -249,6 +252,10 @@ if(isset($fllwrs)){
                       <tr>
                         <td>Email</td>
                         <td><?php echo $_SESSION['Email']?>   </td>      
+                      </tr>
+<tr>
+                        <td>Website</td>
+                        <td><a href="<?php echo $_SESSION['Website']?>"> <?php echo $_SESSION['Website']?> </a> </td>      
                       </tr>
                        <tr>
                         <td>Comment</td>

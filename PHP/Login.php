@@ -101,7 +101,7 @@ function change(){
     <br>
                <div class="lb-header">
             <p3>Or if you want to go back:</p3>
-            <a href="index.php" class="active" id="login-box-link">Go Back!</a>
+            <a href="../index.php" class="active" id="login-box-link">Go Back!</a>
         </div>
 			</div>
 			
