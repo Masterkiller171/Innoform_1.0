@@ -2,6 +2,20 @@
 $postid = $_GET['id'];
 $postdt = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE post_id='$postid'");
 $sql = $postdt  -> fetch_assoc();
+
+if($_SERVER['REQUEST_METHOD']== 'POST'){
+    if(isset($_POST['comment'])){
+        $cmmntid = $_SESSION['id'];
+        if(isset($cmmntid)){                         
+        $Comment = mysql_real_escape_string($_POST['cmmnt']);
+        $datetime = date("d/m/y");
+        $conn -> query("INSERT INTO `comments`(`cmmnt_Comment`, `cmmnt_date`, `user_id`) VALUES ('$Comment','$datetime','$cmmntid') ");
+        }else{
+            $_SESSION['message'] = 'Please login to perform this action';
+            header("Location: Login.php");
+        }
+    }
+}
 ?>
 <html>
    <head>
@@ -22,10 +36,11 @@ $sql = $postdt  -> fetch_assoc();
        <p style="text-align: right;"><?php echo $sql['post_date'] ?></p>
        <hr><br>
        <form method="post">
-       <textarea name="cmmnt" placeholder="Comment on <?php echo $sql['post_topic'] ?>"></textarea>
-       <input type="submit" value="Comment">
+       <textarea name="cmmnt" placeholder="Comment on <?php echo $sql['post_topic'] ?>" style="width: 70%; height: 10%;"></textarea>
+       <input type="submit" value="Comment" style="width: 20%; height: 10%; float: right;" name="comment">
        </form>
     </div>
+    <?php echo cmmnt()?>
     </div>
     </body>
 </html>

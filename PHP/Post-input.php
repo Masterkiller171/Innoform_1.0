@@ -7,7 +7,7 @@
 	 $post_topic = $_POST['post_topic'];
      $post_detail = $_POST['post_detail'];      
           
-     $datetime = date("d/m/y h:i:s");
+     $datetime = date("d/m/y");
      
      if(isset($post_detail) && isset($post_topic) && isset($author) && isset($author_name)){
     //Insert variables into table

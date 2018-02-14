@@ -151,6 +151,33 @@ function all_post(){
            $count++;
        }
 }
+
+function cmmnt(){ 
+    global $conn;
+ $mas = $conn -> query("SELECT MAX(cmmnt_id) AS cmmnt_id FROM `COMMENTS`");
+    $mass = $mas -> fetch_assoc();
+    $max = $mass['cmmnt_id'];
+    $count = 1;
+       while($count <= $max){
+    $cmmnt = $conn -> query("SELECT cmmnt_Comment, cmmnt_date, cmmnt_point, user_id FROM `COMMENTS` WHERE cmmnt_id='$count'");
+          $sqls = $cmmnt -> fetch_assoc();
+         $id = $sqls["user_id"];      
+    $cmmnt_user = $conn -> query("SELECT Username, Name, Surname FROM `userinfo` WHERE id='$id'");       
+         $sqll = $cmmnt_user -> fetch_assoc();
+           
+        echo
+    '<br>
+    <div class="body">
+    <h4 style="padding: 0 60% 0 0;">'.$sqls["cmmnt_Comment"].'</h4> 
+    <h5 style="text-align: right;">'.$sqll["Name"].', '.$sqll["Surname"].'</h5>
+    <p>'.$sqls["cmmnt_Comment"].'</p>
+     <p style="text-align: right;"><img src="../Images/arrup.png" style="width: 2%;"> <img src="../Images/arrdwn.png" style="width: 4%;"></p>
+    </div>';
+           
+           
+           $count++;
+     }
+}
 //function indexpost(){ 
   //  $count = "";
   //  $bool = "";
