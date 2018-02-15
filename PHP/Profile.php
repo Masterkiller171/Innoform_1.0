@@ -234,7 +234,7 @@ if(isset($fllwrs)){
 </div>
 <h3>Progress untill next level:</h3>
 <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $point; ?>" aria-valuemin="<?php echo $minrank;?>" aria-valuemax="<?php echo $maxrank;?>" style="width:70%">your current level: <?php echo $rank;?> - <?php echo $points;?>
+    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $point; ?>" aria-valuemin="<?php echo $minrank;?>" aria-valuemax="<?php echo $maxrank;?>" style="width:70%">your current level: <?php echo $rank;?> - <?php echo $point;?>
     </div>
   </div><hr>
                         <tr> 
