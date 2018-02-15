@@ -3,6 +3,7 @@ $postid = $_GET['id'];
 $postdt = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE post_id='$postid'");
 $sql = $postdt  -> fetch_assoc();
 
+$id = $_SESSION['id'];
 if($_SERVER['REQUEST_METHOD']== 'POST'){
     if(isset($_POST['comment'])){
         $cmmntid = $_SESSION['id'];
@@ -10,8 +11,31 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
         $Comment = mysql_real_escape_string($_POST['cmmnt']);
         $datetime = date("d/m/y");
         $conn -> query("INSERT INTO `comments`(`cmmnt_Comment`, `cmmnt_date`, `user_id`) VALUES ('$Comment','$datetime','$cmmntid') ");
+        $conn -> query("UPDATE comments SET post_id = '$postid' WHERE user_id='$id'");
         }else{
             $_SESSION['message'] = 'Please login to perform this action';
+            header("Location: Login.php");
+        }
+    }
+    if(isset($_POST['upvote'])){
+        if($_SESSION['active'] >= 1){
+        $postnum = $_POST['postnum'];
+        $usernum = $_POST['usernum'];
+        $conn -> query("UPDATE comments SET cmmnt_point = cmmnt_point + 1 WHERE cmmnt_id='$postnum'");
+        $conn -> query("UPDATE userinfo SET My_points = My_points + 1 WHERE id='$usernum'");
+        }else{
+            $_SESSION['message'] = 'Please login to perform that action';
+            header("Location: Login.php");
+        }
+    }
+    if(isset($_POST['downvote'])){
+        if($_SESSION['active'] >= 1){
+        $postnum = $_POST['postnum'];
+        $usernum = $_POST['usernum'];
+        $conn -> query("UPDATE comments SET cmmnt_point = cmmnt_point - 1 WHERE cmmnt_id='$postnum'");
+        $conn -> query("UPDATE userinfo SET My_points = My_points - 1 WHERE id='$usernum'");
+        }else{
+            $_SESSION['message'] = 'Please login to perform that action';
             header("Location: Login.php");
         }
     }

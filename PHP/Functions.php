@@ -154,36 +154,53 @@ function all_post(){
 
 function cmmnt(){ 
     global $conn;
- $mas = $conn -> query("SELECT MAX(cmmnt_id) AS cmmnt_id FROM `COMMENTS`");
+    $postid =  $_GET['id'];
+    $mas = $conn -> query("SELECT MAX(cmmnt_id) AS cmmnt_id FROM `COMMENTS` WHERE post_id='$postid'");
     $mass = $mas -> fetch_assoc();
     $max = $mass['cmmnt_id'];
     $count = 1;
+    
+    
        while($count <= $max){
-    $cmmnt = $conn -> query("SELECT cmmnt_Comment, cmmnt_date, cmmnt_point, user_id FROM `COMMENTS` WHERE cmmnt_id='$count'");
+    $cmmnt = $conn -> query("SELECT cmmnt_Comment, cmmnt_date, cmmnt_point, user_id FROM `COMMENTS` WHERE cmmnt_id='$count' AND post_id='$postid'");
           $sqls = $cmmnt -> fetch_assoc();
          $id = $sqls["user_id"];      
     $cmmnt_user = $conn -> query("SELECT Username, Name, Surname FROM `userinfo` WHERE id='$id'");       
-         $sqll = $cmmnt_user -> fetch_assoc();
-           
+         $sqll = $cmmnt_user -> fetch_assoc();   
+    if($max > 0){       
         echo
-    '<br>
-    <div class="body">
-    <h4 style="padding: 0 60% 0 0;">'.$sqls["cmmnt_Comment"].'</h4> 
-    <h5 style="text-align: right;">'.$sqll["Name"].', '.$sqll["Surname"].'</h5>
-    <p>'.$sqls["cmmnt_Comment"].'</p>
+    '<div class="filler"></div>
+    <div class="body"> 
+    <h5 style="text-align: left; font-size: 110%;">'.$sqll["Username"].'</h5>
+    <h5 style="text-align: left;">'.$sqll["Name"].', '.$sqll["Surname"].'</h5>
+    <p style="padding: 0 80% 0 0;">'.$sqls["cmmnt_Comment"].'</p>
     
+    <br>
     <form method="post">
-    <p style="text-align: right;">
-    <button type ="submit" name="upvote"><img src="../Images/arrup.png" style="width: 2%; title="upvote"> </button>
-    <button type ="submit" name="downvote"><img src="../Images/arrdwn.png" style="width: 4%;" title="upvote"></button>
-    <h6 style="text-align: left;">'.$sqll["cmmnt_point"].'</h6>
+    <p style="padding: 0 85% 0 0;">
+    <table cellspacing="0" cellpadding="0" style="border:none;">
+    <tr>
+    <th style="border:none;">
+    <input type="hidden" value="'.$count.'" name="postnum">
+    <input type="hidden" value="'.$sqls["user_id"].'" name="usernum">
+    <button type ="submit" name="upvote" style="background-color: transparent; border: none;"><img src="../Images/arrup.png" style="width: 19%;  title="Upvote"> </button>
+    <button type ="submit" name="downvote" style="background-color: transparent; border: none;"><img src="../Images/arrdwn.png" style="width: 38%;" title="Downvote"></button></th>
+    <th style="border:none;"><p>'.$sqls["cmmnt_point"].' points</p></th>
+    </tr>
+    </table>
     </p>
-    </form>
+    </form> 
     </div>';
            
            
            $count++;
-     }
+     }else{
+        echo '<div class="filler"></div>
+        <div class="body">
+        <p> No comments yet! Be the first one to comment! </p>
+        </div>';
+    }
+    }
 }
 //function indexpost(){ 
   //  $count = "";
