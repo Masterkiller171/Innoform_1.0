@@ -1,5 +1,7 @@
 <?php
 include 'Functions.php';
+include 'Rankingssys.php';
+
 $id = $_SESSION['id'];
 $Following = $conn -> query("SELECT Following FROM userinfo WHERE id='$id'");
 /*Looping trough all array elements*/
@@ -116,6 +118,8 @@ if(isset($_SESSION['userUsername'])){
 }   
 } 
 }
+
+list($rank, $point, $maxrank, $minrank) = points();
 ?>
 <script type="text/javascript">
         function showDiv() {
@@ -133,7 +137,10 @@ if(isset($_SESSION['userUsername'])){
 <html lang="en">
     <head>
     <title>Innoform - <?php echo $_SESSION['Username'] ?></title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../CSS/Profile.css"> 
     <link rel="stylesheet" href="../CSS/Main.css"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -224,7 +231,12 @@ if(isset($fllwrs)){
                   <table class="table table-user-information">
                     <tbody>
 <div class="panel-title" style="background-color: white; opacity: 0.8; border-radius: 10px; white-space: nowrap;"><h3><?php echo $_SESSION['Name'].', '.$_SESSION['Surname'] ?></h3>
-</div><hr>
+</div>
+<h3>Progress untill next level:</h3>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $point; ?>" aria-valuemin="<?php echo $minrank;?>" aria-valuemax="<?php echo $maxrank;?>" style="width:70%">your current level: <?php echo $rank;?> - <?php echo $points;?>
+    </div>
+  </div><hr>
                         <tr> 
                         <td>Username</td>
                         <td><?php echo $_SESSION['Username'];?></td>
