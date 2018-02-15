@@ -1,2 +1,0 @@
-<?php
-include "Functions.php";
