@@ -1,7 +1,5 @@
 <?php
 include 'Functions.php';
-include 'Rankingssys.php';
-
 $id = $_SESSION['id'];
 $Following = $conn -> query("SELECT Following FROM userinfo WHERE id='$id'");
 /*Looping trough all array elements*/
@@ -118,8 +116,6 @@ if(isset($_SESSION['userUsername'])){
 }   
 } 
 }
-
-list($rank, $point, $maxrank, $minrank) = points();
 ?>
 <script type="text/javascript">
         function showDiv() {
@@ -137,10 +133,7 @@ list($rank, $point, $maxrank, $minrank) = points();
 <html lang="en">
     <head>
     <title>Innoform - <?php echo $_SESSION['Username'] ?></title>
-    <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../CSS/Profile.css"> 
     <link rel="stylesheet" href="../CSS/Main.css"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -154,11 +147,9 @@ list($rank, $point, $maxrank, $minrank) = points();
     display: inline-block;">
     Logout</A>
        
-       
+       <div class="filler"></div>
         <?php navbar()?>
-        <div class="leftfiller"></div>
-        <div class="left-filler"></div>
-<div class="fllwbox"> 
+             <div class="fllwbox" style="width: 10%;"> 
     <strong> 
     <p style="   
     text-align: center; 
@@ -178,7 +169,8 @@ list($rank, $point, $maxrank, $minrank) = points();
                </form>
     </div>
                 </div>
-<div class="fllwbox">  
+            <div class="left-filler"></div>
+<div class="fllwbox" style="width: 10%;">  
     <strong> <p style='
     text-align: center; 
     width: 100%; 
@@ -192,11 +184,7 @@ list($rank, $point, $maxrank, $minrank) = points();
 if(isset($fllwrs)){
     echo $fllwrs;
 }else{
-    echo '<div class="fllwinbox" style="background-color:#ff7f7f"><div class="fllwtxt">           
-                        <input type="submit" value="No followers"  name="fllwrs" style="background: transparent; border: none;"/></div> <p style="float: right;">Offline</p>
-                        <p>No followers</p>
-                       <div class="hidden">No followers</div><br>
-                       </div>'; 
+    echo "No followers";
 }
 ?>
  </form>
@@ -204,17 +192,19 @@ if(isset($fllwrs)){
 </div>
         <div class="container" style="float: right;">         
       <div class="row">
-      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; height: 70%;"> 
+      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; height: 600px;"> 
        <br>
-        <button style="background-color: white; border: none; float: right;" onclick='showDiv()'><img src="../Images/Settings.png" style="border: none; height: 8%; width: auto;" title="click again to hide content"></button>
+        <button style="background-color: white; border: none; float: right; width: 30%;" onclick='showDiv()'><img src="../Images/Settings.png" style="border: none; height: 45%; width: 45%;" title="click again to hide content"/></button>
          <a href="Editprof.php" style="float: right; text-decoration: none;" id="prof">Editprofile</a><br>
          <a href="../Recover/Retcode.php" style="float: right; text-decoration: none;" id="pass">Recovery code</a>
           <strong><h4 class="shad">Member Since:</h4></strong>         
           <strong><h5 class="shad"><?php echo $_SESSION['time'] ?></h5></strong>
-           <div class="boxp" style="height: 70%">
-               <div class="cover left">
+          <div class="filler"></div>
+           <div class="boxp">
+               <div class="cover">
                <p style="text-align: center;">My posts</p>
               <hr>
+           <?php echo my_posts() ?>
            </div>
            </div>
       </div>
@@ -226,17 +216,12 @@ if(isset($fllwrs)){
               <div class="row">
                   <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../Images/Home.png" style="display: none;"> </div>
                   <tabb>
-                      <div class=" col-md-9 col-lg-9 " style="height: 70%;">
+                      <div class=" col-md-9 col-lg-9 " style="height: 560px;">
                    
                   <table class="table table-user-information">
                     <tbody>
 <div class="panel-title" style="background-color: white; opacity: 0.8; border-radius: 10px; white-space: nowrap;"><h3><?php echo $_SESSION['Name'].', '.$_SESSION['Surname'] ?></h3>
-</div>
-<h3>Progress untill next level:</h3>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $point; ?>" aria-valuemin="<?php echo $minrank;?>" aria-valuemax="<?php echo $maxrank;?>" style="width:70%">your current level: <?php echo $rank;?> - <?php echo $point;?>
-    </div>
-  </div><hr>
+</div><hr>
                         <tr> 
                         <td>Username</td>
                         <td><?php echo $_SESSION['Username'];?></td>

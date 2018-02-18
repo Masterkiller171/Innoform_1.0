@@ -3,9 +3,9 @@ $postid = $_GET['id'];
 $postdt = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE post_id='$postid'");
 $sql = $postdt  -> fetch_assoc();
 
-$id = $_SESSION['id'];
 if($_SERVER['REQUEST_METHOD']== 'POST'){
     if(isset($_POST['comment'])){
+        $id = $_SESSION['id'];
         $cmmntid = $_SESSION['id'];
         if(isset($cmmntid)){                         
         $Comment = mysql_real_escape_string($_POST['cmmnt']);
@@ -39,6 +39,30 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
             header("Location: Login.php");
         }
     }
+        if(isset($_POST['commntrsb'])){ 
+            $cmmntr = $_POST["commntr"];
+$quary = $conn -> query("SELECT * FROM userinfo WHERE Username='$cmmntr'");
+$sqlll = mysqli_fetch_array($quary, MYSQLI_ASSOC);
+            
+$_SESSION['userUsername'] = $sqlll['Username'];
+$_SESSION['userName'] = $sqlll['Name'];
+$_SESSION['userSurname'] = $sqlll['Surname'];
+$_SESSION['userEmail'] = $sqlll['Email'];
+$_SESSION['userSpecialty'] = $sqlll['Specialty'];
+$_SESSION['userDays'] = $sqlll['days'];
+$_SESSION['userMonth'] = $sqlll['month'];
+$_SESSION['userYear'] = $sqlll['year'];
+$_SESSION['userGender'] = $sqlll['Gender'];
+$_SESSION['userTime'] = $sqlll['time'];
+$_SESSION['userComment'] = $sqlll['Comment'];
+if(isset($sqlll['Website'])){
+$_SESSION['userWebsite'] = $sqlll['Website'];
+$_SESSION['userFollowing'] = $sqlll['Following'];
+}
+if(isset($_SESSION['userUsername'])){
+    header("Location: ../Userprofile/customuser.php");
+}
+}
 }
 ?>
 <html>

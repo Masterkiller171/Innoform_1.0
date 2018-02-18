@@ -38,14 +38,13 @@
 	top:80px;
 }
 .boxp {
-        direction:rtl;
 	width:90%;
 	height:60%;
 	background:#FFF;
-        border-radius: 2px; 
-        overflow-y: scroll;
-        opacity: 0.8;
-        border-radius: 10px;
+    border-radius: 2px; 
+    overflow-y: scroll;
+    opacity: 0.8;
+    border-radius: 10px;
 }
 .shadow{
     box-shadow: 0 10px 6px -6px #777;
@@ -106,9 +105,10 @@ tabc{
 }
 
 .fllwbox{
+    vertical-align: top;
     direction:rtl;
     width:10%;
-    height: 70%;
+    height: 610px;
     opacity: 0.8;
     background-color: white;
     display: inline-block;
@@ -117,7 +117,7 @@ tabc{
 }
 .fllwinbox{
     width: 90%;
-    height: 15%;
+    height: auto;
     background-color: #d6ebf2;
     border-radius: 10px;
     padding: 5px;

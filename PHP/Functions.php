@@ -101,9 +101,9 @@ if (!function_exists('days_loop')) {
 function my_posts(){
     global $conn;
     $id = $_SESSION['id'];
-    $mas = $conn -> query("SELECT My_posts FROM `topic_data` WHERE author='$id'");
+    $mas = $conn -> query("SELECT MAX(post_id) AS post_id FROM `topic_data` WHERE author='$id'");
     $mass = $mas -> fetch_assoc();
-    $max = $mass['post_topic'];
+    $max = $mass['post_id'];//$mass['post_topic'];
     $count = 1;
     while($count <= $max){
       $data = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE author='$id' AND post_id='$count'");
@@ -119,7 +119,6 @@ function my_posts(){
     
     
 }
-
 function all_post(){
     global $conn;
     $mas = $conn -> query("SELECT MAX(post_id) AS post_id FROM `topic_data`");
@@ -133,14 +132,14 @@ function all_post(){
            
         echo
     '<ol>   
-        <div class="box"  style="width:1000px;">
-                    <div class="cover left">
+        <div class="box"  style="width:1000px; border-radius: 10px;">
+                    <div class="cover" style="background-color: lightgrey;">
                         <h2 class="title">'.$sql["post_topic"].'</h2>
                         <p class="intro">'.$sql["post_detail"].'</p>
                         <p class="date">'.$sql["post_date"].'</p>
                         <form method="post">
                         <input type="hidden" value="'.$count.'" name="id"> 
-                        <input type="submit" name="cmmnt" class="button" value="Comment"> 
+                        <input type="submit" name="cmmnt" style="font-size: 130%; background-color: transparent; border: none;" value="Comment"> 
                         </form>
                     </div>
                 </div> 
@@ -151,7 +150,6 @@ function all_post(){
            $count++;
        }
 }
-
 function cmmnt(){ 
     global $conn;
     $postid =  $_GET['id'];
@@ -167,11 +165,15 @@ function cmmnt(){
          $id = $sqls["user_id"];      
     $cmmnt_user = $conn -> query("SELECT Username, Name, Surname FROM `userinfo` WHERE id='$id'");       
          $sqll = $cmmnt_user -> fetch_assoc();   
-    if($max > 0){       
+    if($id !== NULL){       
         echo
     '<div class="filler"></div>
     <div class="body"> 
-    <h5 style="text-align: left; font-size: 110%;">'.$sqll["Username"].'</h5>
+    <form method="post">
+    <input type="hidden" value="'.$sqll["Username"].'" name="commntr"">
+    <h5 style="font-size: 80%;"><input type="submit" value="'.$sqll["Username"].'"  name="commntrsb" style="background: transparent; border: none; padding: 0 95% 0 0;" title="Click here to go to user profile!"/></h5>
+    </form>
+    <div class="filler"></div>
     <h5 style="text-align: left;">'.$sqll["Name"].', '.$sqll["Surname"].'</h5>
     <p style="padding: 0 80% 0 0;">'.$sqls["cmmnt_Comment"].'</p>
     
@@ -195,110 +197,7 @@ function cmmnt(){
            
            $count++;
      }else{
-        echo '<div class="filler"></div>
-        <div class="body">
-        <p> No comments yet! Be the first one to comment! </p>
-        </div>';
+        $count++;
     }
     }
-}
-//function indexpost(){ 
-  //  $count = "";
-  //  $bool = "";
-//do{
-// echo '<li><a href="Post-page.php">Post</a></li>'; $count++;       if($count = 10){
-//        return $bool ==  false;}
-//    while(
-//     $bool == true;
-//  }
- //)
-//}
-
-$quary = $conn -> query("SELECT * FROM userinfo");
-$sql = mysqli_fetch_array($quary, MYSQLI_ASSOC);  
-/* Gathering all data from database*/
-if(isset($_SESSION['id'])){
-$id= $_SESSION['id'];
-$quary = $conn -> query("SELECT * FROM userinfo WHERE id='$id'");
-$sqlll = mysqli_fetch_array($quary, MYSQLI_ASSOC); //Splicing all data from from database values
-       //WHERE id= ". $_SESSION['id'] ."
-       /* All data from database spliced up to sessions*/
-switch($sqlll){
-       case $sqlll['Username']: 
-       if(!isset($_SESSION['Username'])){
-       $_SESSION['Username'] = $sqlll['Username'];
-       }
-       break;
-	   
-	case $sqlll['Name']:
-        if(!isset($_SESSION['Name'])){
-            $_SESSION['Name'] = $sqlll['Name'];
-        } //Getting data of normie
-        break;
-		
-	case $sqlll['Surname']:
-        if(!isset($_SESSION['Surname'])){ 
-            $_SESSION['Surname'] = $sqlll['Surname'];
-        }
-        break;
-		
-	case $sqlll['Email']:
-        if(!isset($_SESSION['Email'])){ 
-            $_SESSION['Email'] = $sqlll['Email'];
-        }
-        break;
-		
-	case $sqlll['Password']:
-        if(!isset($_SESSION['Password'])){
-            $_SESSION['Password'] = $sqlll['Password'];
-        }
-        break;
-				
-	case $sqlll['Comment']:
-        if(!isset($_SESSION['Comment'])){
-            $_SESSION['Comment'] = $sqlll['Comment'];
-        }
-        break;
-		
-	case $sqlll['Gender']:
-        if(!isset($_SESSION['Gender'])){
-            $_SESSION['Gender'] = $sqlll['Gender'];
-        }
-        break;
-		
-	case $sqlll['Specialty']:
-        if(!isset($_SESSION['Specialty'])){
-            $_SESSION['Specialty'] = $sqlll['Specialty'];
-        }
-        break;
-		
-	case $sqlll['days']:
-        if(!isset($_SESSION['days'])){
-            $_SESSION['days'] = $sqlll['days'];
-        }
-        break;
-		
-	case $sqlll['month']:
-        if(!isset($_SESSION['month'])){
-            $_SESSION['month'] = $sqlll['month'];
-        }
-        break;
-		
-	case $sqlll['year']:
-        if(!isset($_SESSION['year'])){
-            $_SESSION['year'] = $sqlll['year'];
-        }
-
-	case $sqlll['time']:
-        if(!isset($_SESSION['time'])){
-            $_SESSION['time'] = $sqlll['time'];
-        }
-        break;
-		
-	case $sqlll['Website']:
-        if(!isset($_SESSION['Website'])){
-            $_SESSION['Website'] = $sqlll['Website'];
-        }
-        break;              
-}
 }

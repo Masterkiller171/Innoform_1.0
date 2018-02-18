@@ -1,5 +1,5 @@
 <?php
-include "Functions.php";
+include "Connector.php";
 
 $point = $conn -> query("SELECT cmmnt_point FROM COMMENTS WHERE user_id=".$_SESSION['id']."");
 $pointt = $point  -> fetch_assoc();
