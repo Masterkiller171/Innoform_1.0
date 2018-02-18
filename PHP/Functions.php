@@ -109,11 +109,15 @@ function my_posts(){
       $data = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE author='$id' AND post_id='$count'");
       $sql = $data -> fetch_assoc();
       $count++;
+        if($sql !== NULL){ 
         echo
          '
          <div class="box2 shadow" style="background-color: #d6ebf2;"> 
          <div class="left-filler"></div><h2 style="float: left;">'.$sql["post_topic"].'</h2> <br> <p>'.$sql["post_detail"].'</p> 
          <br> <h6>'.$sql["post_date"].' </h6></div>';
+        }else{
+            $count++;
+        }
         
   }
     
@@ -126,7 +130,7 @@ function all_post(){
     $max = $mass['post_id'];
     $count = 1;
        while($count <= $max){
-    $posttop = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE post_id='$count'");
+    $posttop = $conn -> query("SELECT author_name, post_topic, post_detail, post_date FROM `topic_data` WHERE post_id='$count'");
           $sql = $posttop -> fetch_assoc();
            
            
@@ -134,7 +138,7 @@ function all_post(){
     '<ol>   
         <div class="box"  style="width:1000px; border-radius: 10px;">
                     <div class="cover" style="background-color: lightgrey;">
-                        <h2 class="title">'.$sql["post_topic"].'</h2>
+                        <h2 class="title">'.$sql["post_topic"].' - '.$sql["author_name"].'</h2>
                         <p class="intro">'.$sql["post_detail"].'</p>
                         <p class="date">'.$sql["post_date"].'</p>
                         <form method="post">
