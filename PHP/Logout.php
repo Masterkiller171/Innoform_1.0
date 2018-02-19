@@ -7,4 +7,4 @@ $user = $_SESSION['Username'];
  session_destroy();
  $_SESSION['active'] = '0';
   $conn -> query("UPDATE userinfo SET Online='0' WHERE Username='$user'");
- header('location: index.php');
+ header('location: ../index.php');

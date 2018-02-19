@@ -152,7 +152,7 @@ if(isset($_SESSION['userUsername'])){
        <div class="filler"></div>
         <?php navbar()?>  
         
-             <div class="fllwbox" style="width: 10%;"> 
+             <div class="fllwbox" style="width: 175px; height: 750px;"> 
     <strong> 
     <p style="   
     text-align: center; 
@@ -173,7 +173,7 @@ if(isset($_SESSION['userUsername'])){
     </div>
                 </div>
             <div class="left-filler"></div>
-<div class="fllwbox" style="width: 10%;">  
+<div class="fllwbox" style="width: 175px; height: 750px;">  
     <strong> <p style='
     text-align: center; 
     width: 100%; 
@@ -194,8 +194,8 @@ if(isset($fllwrs)){
     </div>
 </div>  
         <div class="container" style="float: right;">
-      <div class="row">
-      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; padding: 10px 50px; height: 70%">      
+      <div class="row" style="width: 1310px;">
+      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; height: 740px; width: 500px;">      
           <strong><h4 class="shad">Member Since:</h4></strong>         
           <br>
           <strong><h5 class="shad"><?php echo $_SESSION['userTime'] ?></h5></strong>
@@ -206,7 +206,7 @@ if(isset($fllwrs)){
                <div class="cover left">
                <p style="text-align: center;">My posts</p>
               <hr>
-           <?php echo /*my_loop()*/ 'Not avaible'; ?>
+           <?php echo cus_posts(); ?>
            </div>
            </div>
       </div><div class="left-filler"></div>
@@ -218,7 +218,7 @@ if(isset($fllwrs)){
               <div class="row">
                   <div class="left-filler"></div>
                   <tabb>
-                      <div class=" col-md-9 col-lg-9 " style="height: 65.5%;">
+                      <div class=" col-md-9 col-lg-9 " style="height: 700px; width: 430px;">
                    
                   <table class="table table-user-information">
                     <tbody>

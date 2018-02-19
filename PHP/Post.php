@@ -14,6 +14,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
           $cmmntid =  $_SESSION['id'];
         $datetime = date("d/m/y");
         $conn -> query("INSERT INTO `comments`(`cmmnt_Comment`, `cmmnt_date`, `user_id`, `post_id`) VALUES ('$Comment','$datetime','$cmmntid','$postid') ");
+        $conn -> query("UPDATE userinfo SET My_points = My_points + 1 WHERE id='$cmmntid'");
         }else{
             $_SESSION['message'] = 'Please login to perform this action';
             header("Location: Login.php");
@@ -40,7 +41,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
         $postnum = $_POST['postnum'];
         $usernum = $_POST['usernum'];
         $conn -> query("UPDATE comments SET cmmnt_point = cmmnt_point - 1 WHERE cmmnt_id='$postnum'");
-        $conn -> query("UPDATE userinfo SET My_points = My_points + 1 WHERE id='$usernum'");
+        $conn -> query("UPDATE userinfo SET My_points = My_points  1 WHERE id='$usernum'");
         }else{
             $_SESSION['message'] = 'Please login to perform that action';
             header("Location: Login.php");

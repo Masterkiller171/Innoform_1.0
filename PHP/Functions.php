@@ -30,13 +30,13 @@ global $conn;
     global $butout;
     
   //style for registration button
-  $regbutt= '<a href ="PHP/Login.php" style="'.$butreg.' class="href"> Login/Register</a>';
+  $regbutt= '<a href ="../PHP/Login.php" style="'.$butreg.' class="href"> Login/Register</a>';
 
   //Profile
-  $probutt= '<a href ="PHP/Profile.php" style="'.$butreg.' class="href"> My Profile</a>';
+  $probutt= '<a href ="../PHP/Profile.php" style="'.$butreg.' class="href"> My Profile</a>';
 
    //logout
-  $outbut= '<a href ="PHP/Logout.php" style="'. $butout .' float: left;""> Logout</a>';
+  $outbut= '<a href ="../PHP/Logout.php" style="'. $butout .' float: left;""> Logout</a>';
 if(isset($_SESSION['id'])){
 $id= $_SESSION['id'];
 $quary = $conn -> query("SELECT * FROM userinfo WHERE id='$id'");
@@ -124,6 +124,31 @@ function my_posts(){
     
 }
 
+function cus_posts(){
+    global $conn;
+    $user = $_SESSION['userUsername'];
+    $mas = $conn -> query("SELECT MAX(post_id) AS post_id FROM `topic_data` WHERE author_name='$user'");
+    $mass = $mas -> fetch_assoc();
+    $max = $mass['post_id'];//$mass['post_topic'];
+    $count = 1;
+    while($count <= $max){
+      $data = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE author_name='$user' AND post_id='$count'");
+      $sql = $data -> fetch_assoc();
+      $count++;
+        if($sql !== NULL){ 
+        echo
+         '
+         <div class="box2 shadow" style="background-color: #d6ebf2;"> 
+         <div class="left-filler"></div><h2 style="float: left;">'.$sql["post_topic"].'</h2> <br> <p>'.$sql["post_detail"].'</p> 
+         <br> <h6>'.$sql["post_date"].' </h6></div>';
+        }else{
+            $count++;
+        }
+        
+  }
+    
+    
+}
 function all_post(){
     global $conn;
     $mas = $conn -> query("SELECT MAX(post_id) AS post_id FROM `topic_data`");
@@ -135,14 +160,14 @@ function all_post(){
           $sql = $posttop -> fetch_assoc();
            
            
-        echo
+   echo
     '<ol>   
         <div class="box"  style="width:1000px; border-radius: 10px;">
                     <div class="cover" style="background-color: lightgrey;">
                         <h2 class="title" style="color: black;">'.$sql["post_topic"].' - '.$sql["author_name"].' </h2>
-                        <p style="color: black; font-size: 90%;">'.$sql["post_views"].' views</p>
-                        <p style="color: black;">'.$sql["post_detail"].'</p>
-                        <p class="date" style="color: black;">'.$sql["post_date"].'</p>
+                        <p style="color: grey; font-size: 90%;">'.$sql["post_views"].' views</p>
+                        <p style="color: grey;">'.$sql["post_detail"].'</p>
+                        <p class="date" style="color: grey;">'.$sql["post_date"].'</p>
                         <form method="post">
                         <input type="hidden" value="'.$count.'" name="id"> 
                         <input type="submit" name="cmmnt" style="font-size: 130%; background-color: transparent; border: none;" value="View post"> 

@@ -154,7 +154,7 @@ $xpneed = $maxrank- $pointstot;
        
        <div class="filler"></div>
         <?php navbar()?>
-             <div class="fllwbox" style="width: 250px; height: 750px;"> 
+             <div class="fllwbox" style="width: 175px; height: 750px;"> 
     <strong> 
     <p style="   
     text-align: center; 
@@ -175,7 +175,7 @@ $xpneed = $maxrank- $pointstot;
     </div>
                 </div>
             <div class="left-filler"></div>
-<div class="fllwbox" style="width: 250px; height: 750px;">  
+<div class="fllwbox" style="width: 175px; height: 750px;">  
     <strong> <p style='
     text-align: center; 
     width: 100%; 
