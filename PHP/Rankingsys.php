@@ -1,86 +1,87 @@
 <?php
 include "Connector.php";
 
-$point = $conn -> query("SELECT cmmnt_point FROM COMMENTS WHERE user_id=".$_SESSION['id']."");
+$point = $conn -> query("SELECT My_points FROM userinfo WHERE id=".$_SESSION['id']."");
 $pointt = $point  -> fetch_assoc();
-$points = $pointt['cmmnt_point'];
+$pointstot = $pointt['My_points'];
 
 function points(){ 
-    global $points;
-if($points <= 50){
+    global $pointstot;
+if($pointstot < 100){
       $rank =  "new";
-      $point = $points;
-      $maxrank = 49;
+      $point = $pointstot;
+      $maxrank = 99;
       $minrank = 0;
-    return array($rank, $point, $maxrank, $minrank);
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
 }
-    if($points > 50 && $points <= 115){
+    if($pointstot > 100 && $pointstot <= 200){
       $rank = "Starter";
-      $point = $points;
-      $maxrank = 115;
-      $minrank = 50;
-    return array($rank, $point, $maxrank, $minrank);
+      $point = $pointstot - 100;
+      $maxrank = 200;
+      $minrank = 100;
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 115 && $points <= 180){
+    if($pointstot > 200 && $pointstot <= 400){
+        $pointstot;
       $rank = "Starterhelp";
-      $point = $points;
-      $maxrank = 180;
-      $minrank = 115;
-    return array($rank, $point, $maxrank, $minrank);
+      $point = $pointstot - 200;
+      $maxrank = 400;
+      $minrank = 200;
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 180 && $points <= 250){
+    if($pointstot > 400 && $pointstot <= 800){
       $rank = "Helper";
-      $point = $points;
-      $maxrank = 250;
-      $minrank = 180;
-    return array($rank, $point, $maxrank, $minrank);
+      $point = $pointstot - 400;
+      $maxrank = 800;
+      $minrank = 400;
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 250 && $points <= 325){
+    if($pointstot > 800 && $pointstot <= 1600){
       $rank = "Helper+";
-      $point = $points;
-      $maxrank = 325;
-      $minrank = 250;
-    return array($rank, $point, $maxrank, $minrank);
+      $point = $pointstot - 800;
+      $maxrank = 1600;
+      $minrank = 800;
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 325 && $points <= 405){
+    if($pointstot > 1600 && $pointstot <= 3200){
       $rank = "Helper++";
-      $point = $points;
-      $maxrank = 405;
-      $minrank = 325;
-    return array($rank, $point, $maxrank, $minrank);
+      $point = $pointstot - 1600;
+      $maxrank = 3200;
+      $minrank = 1600;
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 405 && $points <= 490){
+    if($pointstot > 3200 && $pointstot <= 6400){
       $rank = "Trustworthy";
-      $point = $points;
-      $maxrank = 490;
-      $minrank = 405;
-    return array($rank, $point, $maxrank, $minrank);
+      $point = $pointstot - 750;
+      $maxrank = 910;
+      $minrank = 750;
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 490 && $points <= 580){
+    if($pointstot > 910 && $pointstot <= 1080){
       $rank = "Master";
-      $point = $points;
-      $maxrank = 580;
+      $point = $pointstot - 910;
+      $maxrank = 1080;
       $minrank = 490;
-    return array($rank, $point, $maxrank, $minrank);
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 580 && $points <= 675){
+    if($pointstot > 580 && $pointstot <= 675){
       $rank = "Helpmaster";
-      $point = $points;
+      $point = $pointstot - 580;
       $maxrank = 580;
       $minrank = 490;
-    return array($rank, $point, $maxrank, $minrank);
+    return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($points > 675){
+    if($pointstot > 675){
       $rank = "Helpmaster+";
-      $point = $points;
+      $point = $pointstot;
       $maxrank = 99999999;
       $minrank = 675;
     return array($rank, $point, $maxrank, $minrank);

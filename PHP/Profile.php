@@ -1,5 +1,6 @@
 <?php
 include 'Functions.php';
+include 'Rankingsys.php';
 $id = $_SESSION['id'];
 $Following = $conn -> query("SELECT Following FROM userinfo WHERE id='$id'");
 /*Looping trough all array elements*/
@@ -116,6 +117,10 @@ if(isset($_SESSION['userUsername'])){
 }   
 } 
 }
+list($rank, $point, $maxrank, $minrank, $pointstot) = points();
+
+$totalp = $maxrank - $minrank;
+$xpneed = $maxrank- $pointstot;
 ?>
 <script type="text/javascript">
         function showDiv() {
@@ -149,7 +154,7 @@ if(isset($_SESSION['userUsername'])){
        
        <div class="filler"></div>
         <?php navbar()?>
-             <div class="fllwbox" style="width: 10%;"> 
+             <div class="fllwbox" style="width: 250px; height: 750px;"> 
     <strong> 
     <p style="   
     text-align: center; 
@@ -170,7 +175,7 @@ if(isset($_SESSION['userUsername'])){
     </div>
                 </div>
             <div class="left-filler"></div>
-<div class="fllwbox" style="width: 10%;">  
+<div class="fllwbox" style="width: 250px; height: 750px;">  
     <strong> <p style='
     text-align: center; 
     width: 100%; 
@@ -191,10 +196,10 @@ if(isset($fllwrs)){
     </div>
 </div>
         <div class="container" style="float: right;">         
-      <div class="row">
-      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; height: 600px;"> 
+      <div class="row" style="width: 1310px;">
+      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; height: 740px; width: 500px;"> 
        <br>
-        <button style="background-color: white; border: none; float: right; width: 30%;" onclick='showDiv()'><img src="../Images/Settings.png" style="border: none; height: 45%; width: 45%;" title="click again to hide content"/></button>
+       <button style="background-color: white; border: none; float: right; width: 80px;" onclick='showDiv()'><img src="../Images/Settings.png" style="border: none; height: 60px; width: 60px;" title="click again to hide content"/></button>
          <a href="Editprof.php" style="float: right; text-decoration: none;" id="prof">Editprofile</a><br>
          <a href="../Recover/Retcode.php" style="float: right; text-decoration: none;" id="pass">Recovery code</a>
           <strong><h4 class="shad">Member Since:</h4></strong>         
@@ -216,12 +221,21 @@ if(isset($fllwrs)){
               <div class="row">
                   <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../Images/Home.png" style="display: none;"> </div>
                   <tabb>
-                      <div class=" col-md-9 col-lg-9 " style="height: 560px;">
+                      <div class=" col-md-9 col-lg-9 " style="height: 700px;">
                    
                   <table class="table table-user-information">
                     <tbody>
 <div class="panel-title" style="background-color: white; opacity: 0.8; border-radius: 10px; white-space: nowrap;"><h3><?php echo $_SESSION['Name'].', '.$_SESSION['Surname'] ?></h3>
-</div><hr>
+</div>
+    <p style="width:80%" data-value="80">level progress:</p>
+        <progress max="<?php echo $totalp ?>" value="<?php echo $point ?>" class="html5">
+            <div class="progress-bar">
+                <span style="width: 80%">80%</span>
+            </div>
+        </progress>
+                        <p>Current rank: <?php echo $rank ?></p>
+                      <p>you will need <?php echo $xpneed?> points to reach next level</p>
+                       <hr>
                         <tr> 
                         <td>Username</td>
                         <td><?php echo $_SESSION['Username'];?></td>
@@ -269,10 +283,6 @@ if(isset($fllwrs)){
                           
         </div>
       </div>
-    </div>
-        <div class="filler two"></div>
-    <div class="footer">
-        <h2> Made by Youri Bontekoe</h2>
     </div>
 </body>
 </html>

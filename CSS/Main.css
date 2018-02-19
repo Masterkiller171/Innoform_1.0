@@ -145,6 +145,7 @@ nav > ul > li {
     transition: all 0.1s linear;
     background-color: aliceblue;
     opacity: 0.9;
+    display: inline-block;
 }
 
 text-align-cent {

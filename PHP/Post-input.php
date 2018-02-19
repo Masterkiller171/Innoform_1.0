@@ -15,6 +15,7 @@
      $result = $conn -> query($sqls);
          
       $conn -> query("UPDATE userinfo SET My_posts = My_posts + 1 WHERE id = $author");
+      $conn -> query("UPDATE userinfo SET My_points = My_points + 1 WHERE id='$author'");
       header("Location: ../index.php");
      }else{
          $_SESSION['message'] = 'Please fill in the required fields';

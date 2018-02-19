@@ -123,6 +123,7 @@ function my_posts(){
     
     
 }
+
 function all_post(){
     global $conn;
     $mas = $conn -> query("SELECT MAX(post_id) AS post_id FROM `topic_data`");
@@ -130,7 +131,7 @@ function all_post(){
     $max = $mass['post_id'];
     $count = 1;
        while($count <= $max){
-    $posttop = $conn -> query("SELECT author_name, post_topic, post_detail, post_date FROM `topic_data` WHERE post_id='$count'");
+    $posttop = $conn -> query("SELECT post_views, post_topic, post_detail, post_date, author_name FROM `topic_data` WHERE post_id='$count'");
           $sql = $posttop -> fetch_assoc();
            
            
@@ -138,12 +139,13 @@ function all_post(){
     '<ol>   
         <div class="box"  style="width:1000px; border-radius: 10px;">
                     <div class="cover" style="background-color: lightgrey;">
-                        <h2 class="title">'.$sql["post_topic"].' - '.$sql["author_name"].'</h2>
-                        <p class="intro">'.$sql["post_detail"].'</p>
-                        <p class="date">'.$sql["post_date"].'</p>
+                        <h2 class="title" style="color: black;">'.$sql["post_topic"].' - '.$sql["author_name"].' </h2>
+                        <p style="color: black; font-size: 90%;">'.$sql["post_views"].' views</p>
+                        <p style="color: black;">'.$sql["post_detail"].'</p>
+                        <p class="date" style="color: black;">'.$sql["post_date"].'</p>
                         <form method="post">
                         <input type="hidden" value="'.$count.'" name="id"> 
-                        <input type="submit" name="cmmnt" style="font-size: 130%; background-color: transparent; border: none;" value="Comment"> 
+                        <input type="submit" name="cmmnt" style="font-size: 130%; background-color: transparent; border: none;" value="View post"> 
                         </form>
                     </div>
                 </div> 
@@ -154,6 +156,7 @@ function all_post(){
            $count++;
        }
 }
+
 function cmmnt(){ 
     global $conn;
     $postid =  $_GET['id'];
@@ -169,15 +172,12 @@ function cmmnt(){
          $id = $sqls["user_id"];      
     $cmmnt_user = $conn -> query("SELECT Username, Name, Surname FROM `userinfo` WHERE id='$id'");       
          $sqll = $cmmnt_user -> fetch_assoc();   
-    if($id !== NULL){       
+    if($max > 0){ 
+        if($sqls !== NULL){ 
         echo
     '<div class="filler"></div>
     <div class="body"> 
-    <form method="post">
-    <input type="hidden" value="'.$sqll["Username"].'" name="commntr"">
-    <h5 style="font-size: 80%;"><input type="submit" value="'.$sqll["Username"].'"  name="commntrsb" style="background: transparent; border: none; padding: 0 95% 0 0;" title="Click here to go to user profile!"/></h5>
-    </form>
-    <div class="filler"></div>
+    <h5 style="text-align: left; font-size: 110%;">'.$sqll["Username"].'</h5>
     <h5 style="text-align: left;">'.$sqll["Name"].', '.$sqll["Surname"].'</h5>
     <p style="padding: 0 80% 0 0;">'.$sqls["cmmnt_Comment"].'</p>
     
@@ -197,11 +197,17 @@ function cmmnt(){
     </p>
     </form> 
     </div>';
+            $count++;
+        }else{
+            $count++;
+        }
            
            
-           $count++;
      }else{
-        $count++;
+        echo '<div class="filler"></div>
+        <div class="body">
+        <p> No comments yet! Be the first one to comment! </p>
+        </div>';
     }
     }
 }

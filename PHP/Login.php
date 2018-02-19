@@ -49,7 +49,7 @@ else { // User exists
 <body>
 <div class="wrapper">
 	<div class="login">
-		<div class="login-screen">
+		<div class="login-screen" style="300px;">
                     <div class="lb-header">
             <p3>Or if you already have an account:</p3>
             <a href="Reg.php" class="active" id="login-box-link">Register</a>
@@ -58,18 +58,19 @@ else { // User exists
 				<h1>Login</h1>
             
 			</div>
-            <?php echo $_SESSION['message']; ?>
-                    <aligner><small>Please fill in your name and password</small></aligner>
+            <p style="color: red;"><?php echo $_SESSION['message']; ?></p>
        <form method="post">
 			<div class="login-form">
 				<div class="control-group">                               
-                                <input type="email" class="login-field" value="" placeholder="Email Adress" id="login-name" name="mail" required/>
-				<label class="login-field-icon fui-user" for="login-name"></label>                          
-				</div>                           
-				<div class="control-group">                                   
-                <input class="Password" type="password"  placeholder="Password..." name='pass' autocomplete="on" required/>                                   
-                <input type="button" value="show" id="showHide"  onclick="change()" style="width: 60px;"/>
-                                
+                <input type="email" class="login-field" placeholder="Email Adress" id="login-name" name="mail" required/> 
+                <input type="button" style="width: 15%; "/>                   
+				</div>                        
+				<div class="control-group">                                             
+                <input class="Password" type="password"  placeholder="Password..." name='pass' autocomplete="on" required/> 
+                <input type="button" value="show" id="showHide"  onclick="change()" style="width: 15%; "/>      
+                <a href="../Recover/Recpass.php" style="text-decoration: none; display: inline-block;">Forgot Password?</a>                                      
+                 </div>
+                               
  <script type="text/javascript">
   $(document).ready(function() {
    $("#showHide").click(function() {  //Checking the button has been pressed
@@ -92,9 +93,9 @@ function change(){
      return  document.getElementById("showHide").value = "show";
         }
 };
- </script><br><a href="../Recover/Recpass.php" style="text-decoration: none;">Forgot Password?</a>
+ </script>
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
-				</div>
+				
                             <button type="submit" class="btn" required/>login
         </div>
     </form>
