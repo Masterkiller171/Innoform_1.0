@@ -57,21 +57,21 @@ if($pointstot < 100){
     
     if($pointstot > 3200 && $pointstot <= 6400){
       $rank = "Trustworthy";
-      $point = $pointstot - 750;
-      $maxrank = 910;
-      $minrank = 750;
+      $point = $pointstot - 3200;
+      $maxrank = 6400;
+      $minrank = 3200;
     return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($pointstot > 910 && $pointstot <= 1080){
+    if($pointstot > 6400 && $pointstot <= 12800){
       $rank = "Master";
-      $point = $pointstot - 910;
-      $maxrank = 1080;
-      $minrank = 490;
+      $point = $pointstot - 6400;
+      $maxrank = 12800;
+      $minrank = 6400;
     return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($pointstot > 580 && $pointstot <= 675){
+    if($pointstot > 12800 && $pointstot <= 45000){
       $rank = "Helpmaster";
       $point = $pointstot - 580;
       $maxrank = 580;
@@ -79,11 +79,11 @@ if($pointstot < 100){
     return array($rank, $point, $maxrank, $minrank, $pointstot);
     }
     
-    if($pointstot > 675){
+    if($pointstot < 45000){
       $rank = "Helpmaster+";
       $point = $pointstot;
       $maxrank = 99999999;
-      $minrank = 675;
+      $minrank = 45000;
     return array($rank, $point, $maxrank, $minrank);
     }
 }

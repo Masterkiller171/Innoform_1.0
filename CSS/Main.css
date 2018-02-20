@@ -93,18 +93,18 @@ nav > ul > li {
 }
 
 .right_box {
-    display: block;
-    width: 15%;
+    float: right;
+    display: inline-block;
+    width: 300px;
     height: auto;
     outline: none;
     border: 1px solid #ddd;
     padding: 0 10px;
     border-radius: 4px;
     color: #333;
-    font-size: 01.1rem;
+    font-size: 1.1rem;
     transition: all 0.1s linear;
     background-color: aliceblue;
-    float: right;
     text-align: left;
     opacity: 0.8;
 }

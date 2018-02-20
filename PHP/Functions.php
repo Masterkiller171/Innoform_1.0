@@ -55,6 +55,7 @@ if (!function_exists('navbar')) {
 function navbar(){
     global $navbaradmin; //Getting navbar for superior human beings from Libary.php
     global $navbar; //Getting navbar for normies from Libary.php
+    global $navbarpleb;
     global $conn;
     if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
@@ -66,7 +67,7 @@ if($sql['Perm'] == 2){
        echo $navbar;
    }
 }else{
-       echo $navbar;
+       echo $navbarpleb;
    }
 }
 }

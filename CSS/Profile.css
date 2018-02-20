@@ -105,6 +105,7 @@ tabc{
 }
 
 .fllwbox{
+    float: right;
     vertical-align: top;
     direction:rtl;
     width:10%;

@@ -1,6 +1,7 @@
 <?php
 include 'Functions.php';
 include 'Rankingsys.php';
+$_SESSION['mas'] = '';
 $id = $_SESSION['id'];
 $Following = $conn -> query("SELECT Following FROM userinfo WHERE id='$id'");
 /*Looping trough all array elements*/
@@ -116,6 +117,34 @@ if(isset($_SESSION['userUsername'])){
     header("Location: ../Userprofile/customuser.php");
 }   
 } 
+if(isset($_POST['srchus'])){
+if(isset($_POST['userquer'])){
+$username = $_POST['userquer'];
+$quary = $conn -> query("SELECT * FROM userinfo WHERE Username='$username'");
+$sqlll = mysqli_fetch_array($quary, MYSQLI_ASSOC); //Splicing all data from from
+if($sqlll !== NULL){ 
+$_SESSION['userUsername'] = $sqlll['Username'];
+$_SESSION['userName'] = $sqlll['Name'];
+$_SESSION['userSurname'] = $sqlll['Surname'];
+$_SESSION['userEmail'] = $sqlll['Email'];
+$_SESSION['userSpecialty'] = $sqlll['Specialty'];
+$_SESSION['userDays'] = $sqlll['days'];
+$_SESSION['userMonth'] = $sqlll['month'];
+$_SESSION['userYear'] = $sqlll['year'];
+$_SESSION['userGender'] = $sqlll['Gender'];
+$_SESSION['userTime'] = $sqlll['time'];
+$_SESSION['userComment'] = $sqlll['Comment'];
+if(isset($sqlll['Website'])){
+$_SESSION['userWebsite'] = $sqlll['Website'];
+}
+    header("Location: ../Userprofile/customuser.php");
+}else{
+    $_SESSION['mas'] = "That username doesn't exist!";
+}
+}else{
+    $_SESSION['mas'] = "Please enter a username!";
+}
+}
 }
 list($rank, $point, $maxrank, $minrank, $pointstot) = points();
 
@@ -144,7 +173,9 @@ $xpneed = $maxrank- $pointstot;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     
-    <body>
+    <body style="    
+    max-width: 100%;
+    overflow-x: hidden;">
 <A href="Logout.php" style="
     padding: 5 1%;
     text-align: center;
@@ -154,7 +185,8 @@ $xpneed = $maxrank- $pointstot;
        
        <div class="filler"></div>
         <?php navbar()?>
-             <div class="fllwbox" style="width: 175px; height: 750px;"> 
+             <div class="fllwbox" style="width: 225px; height: 790px;"> 
+             
     <strong> 
     <p style="   
     text-align: center; 
@@ -175,7 +207,7 @@ $xpneed = $maxrank- $pointstot;
     </div>
                 </div>
             <div class="left-filler"></div>
-<div class="fllwbox" style="width: 175px; height: 750px;">  
+<div class="fllwbox" style="width: 225px; height: 790px;">  
     <strong> <p style='
     text-align: center; 
     width: 100%; 
@@ -195,9 +227,10 @@ if(isset($fllwrs)){
  </form>
     </div>
 </div>
-        <div class="container" style="float: right;">         
-      <div class="row" style="width: 1310px;">
-      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; height: 740px; width: 500px;"> 
+        <div class="container" style="float: right;">     
+           
+      <div class="row" style="width: 120%;">
+      <div class="col-md-5 toppad" style="background-color: white; border-radius: 10px; height: 780px;"> 
        <br>
        <button style="background-color: white; border: none; float: right; width: 80px;" onclick='showDiv()'><img src="../Images/Settings.png" style="border: none; height: 60px; width: 60px;" title="click again to hide content"/></button>
          <a href="Editprof.php" style="float: right; text-decoration: none;" id="prof">Editprofile</a><br>
@@ -212,6 +245,15 @@ if(isset($fllwrs)){
            <?php echo my_posts() ?>
            </div>
            </div>
+                    <br>
+                     <div class="right_box" style="width: 95%;">
+                     <p style="color: red; text-align: center;"><?php echo $_SESSION['mas'] ?></p>
+          <form method="post">
+           <input type="text" name="userquer" placeholder="Find other users" style="width: 90%; height: 30px; border-radius: 5px; border: 1px solid;"/><br>
+           <input type="submit" value="Find user" name="srchus" style="width: 90%; height: 30px; border-radius: 5px; background-color: white; font-size: 110%; border: none;  opacity: 0.8;" />
+           </form>
+        <p><?php echo $_SESSION['message']; ?></p>
+        </div> 
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
             
@@ -219,7 +261,7 @@ if(isset($fllwrs)){
             <div class="panel-heading">
             <div class="panel-body">
               <div class="row">
-                  <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../Images/Home.png" style="display: none;"> </div>
+                  <div class="col-md-3 col-lg-3 " align="center"> </div>
                   <tabb>
                       <div class=" col-md-9 col-lg-9 " style="height: 700px;">
                    
@@ -273,16 +315,17 @@ if(isset($fllwrs)){
                            <td><?php echo $_SESSION['Comment']?></td>
                      </tr>
                       </tbody>
+                      
                     </table>
                 </div>
                   </tabb>
                 </div>             
               </div> 
             </div>
-          </div>
-                          
-        </div>
+          </div>       
+            <br> 
+        </div>          
       </div>
-    </div>
+    </div> 
 </body>
 </html>
