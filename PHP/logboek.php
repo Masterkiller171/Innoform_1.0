@@ -4,8 +4,8 @@ require ("Functions.php");
 <html lang="en">
 <head>
     <title>Logboek </title>
-    <link rel="stylesheet" type="text/css" href="../../CSS/Main.css">
-    <link rel="stylesheet" type="text/css" href="../../CSS/Logboek.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Main.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Logboek.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body style="background: lightblue;">

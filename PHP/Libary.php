@@ -57,9 +57,10 @@ $navbar ='
        <li class="sub-menu-parent"><a '. $dec .'>About us</a>
        <ul class="sub-menu">
          <li><a href="PHP/Aboutus.php" '. $dec .'>Our project</a></li>
-       </ul></li>
+       </ul>
+       </li>
+       
    </ul>
-   
  </nav>
     <div class="filler"></div>';
 //The navbar for (almost) every page
@@ -92,10 +93,18 @@ $navbar ='
        </ul></li>
        <li class="sub-menu-parent"><a '. $dec .'>About us</a>
        <ul class="sub-menu">
-         <li><a href="PHP/Aboutus.php" '. $dec .'>Our project</a></li>
-       </ul></li>
+         <li><a href="../PHP/Aboutus.php" '. $dec .'>Our project</a></li>
+         </ul>
+  
+   <li style="white-space:nowrap;"><div style="padding: 0 0 0 600px;">
+   <table><tr>
+    <th><button style="width: 20px; height 20px; background-color: transparent; border: none; float: right;"></th>
+    <th><img src="../Images/mail.png" style="width: 40px; height 40px;" alt="message"></th>
+    <th><p>1 message(s)</p></th>
+   </button></div></tr>
+   </table>
+   </li>
    </ul>
-   
  </nav>
     <div class="filler"></div>';
 
