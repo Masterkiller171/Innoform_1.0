@@ -1,6 +1,5 @@
 <?php
 $dec = 'style="text-decoration: none;" color: #705090;';
-
 $butreg = '
     color: #705090;
     padding: 5 1%;
@@ -8,7 +7,6 @@ $butreg = '
     text-decoration: none;
     float: right;
     display: absolute;';
-
 $butout = '
     color: #705090;
     padding: 5 1%;
@@ -16,16 +14,13 @@ $butout = '
     text-decoration: none;
     float: left;
     display: absolute;';
-
 //Loop on profile page for posts
-
 //Link to login page
 $Login ='<a href ="../PHP/Reg.php"> Please Login</a>';
-
 //Link to Create Post page
 $Create ='<a href="../PHP/Post-input.php">Create post</a>';
-
-$navbar =' 
+//The navbar for (almost) every page
+$navbarpleb =' 
     <nav style="font-size: 140%; background-color: white;">
     <div class="left-filler"></div>
    <ul>
@@ -57,13 +52,11 @@ $navbar ='
        <li class="sub-menu-parent"><a '. $dec .'>About us</a>
        <ul class="sub-menu">
          <li><a href="PHP/Aboutus.php" '. $dec .'>Our project</a></li>
-       </ul>
-       </li>
-       
+       </ul></li>
    </ul>
+   
  </nav>
     <div class="filler"></div>';
-//The navbar for (almost) every page
 $navbar =' 
     <nav style="font-size: 140%; background-color: white;">
     <div class="left-filler"></div>
@@ -93,21 +86,12 @@ $navbar ='
        </ul></li>
        <li class="sub-menu-parent"><a '. $dec .'>About us</a>
        <ul class="sub-menu">
-         <li><a href="../PHP/Aboutus.php" '. $dec .'>Our project</a></li>
-         </ul>
-  
-   <li style="white-space:nowrap;"><div style="padding: 0 0 0 600px;">
-   <table><tr>
-    <th><button style="width: 20px; height 20px; background-color: transparent; border: none; float: right;"></th>
-    <th><img src="../Images/mail.png" style="width: 40px; height 40px;" alt="message"></th>
-    <th><p>1 message(s)</p></th>
-   </button></div></tr>
-   </table>
-   </li>
+         <li><a href="PHP/Aboutus.php" '. $dec .'>Our project</a></li>
+       </ul></li>
    </ul>
+   
  </nav>
     <div class="filler"></div>';
-
 $navbaradmin =' <nav style="font-size: 120%; background-color: white; font-family: Verdana, Geneva, sans-serif;">
 <div class="left-filler"></div>
      <ul>
@@ -148,7 +132,6 @@ $navbaradmin =' <nav style="font-size: 120%; background-color: white; font-famil
    </ul>
  </nav>
  <div class="filler"></div>';
-
 //$logout = ' <A href="" style="color: Blue;
 //    padding: 5 1%;
 //    text-align: center;

@@ -107,7 +107,7 @@ function my_posts(){
     $max = $mass['post_id'];//$mass['post_topic'];
     $count = 1;
     while($count <= $max){
-      $data = $conn -> query("SELECT post_topic, post_detail, post_date FROM `topic_data` WHERE author='$id' AND post_id='$count'");
+      $data = $conn -> query("SELECT post_views, post_topic, post_detail, post_date FROM `topic_data` WHERE author='$id' AND post_id='$count'");
       $sql = $data -> fetch_assoc();
       $count++;
         if($sql !== NULL){ 
@@ -115,7 +115,7 @@ function my_posts(){
          '
          <div class="box2 shadow" style="background-color: #d6ebf2;"> 
          <div class="left-filler"></div><h2 style="float: left;">'.$sql["post_topic"].'</h2> <br> <p>'.$sql["post_detail"].'</p> 
-         <br> <h6>'.$sql["post_date"].' </h6></div>';
+         <br> <h6>'.$sql["post_views"].' views </h6></div>';
         }else{
             $count++;
         }
